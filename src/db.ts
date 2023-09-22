@@ -10,10 +10,11 @@ import { Recorrido } from './entities/recorrido.entity';
 
 export const AppDataSource = new DataSource({
     type: 'postgres',
-    port: 5432,
-    username: 'admin',
-    password: 'root',
-    database: 'QhapaqTour',
+    port: Number(process.env.POSTGRES_PORT),
+    username: process.env.POSTGRES_USERNAME,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DATABASE,
+    ssl: process.env.POSTGRES_SSL === 'true',
     synchronize: true,
     entities: [Usuario,Guia,Vehiculo,Reservas,Calificacion,Recorrido,Lugar,Pago]
 });
