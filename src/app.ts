@@ -4,7 +4,7 @@ import cors from 'cors';
 import passport from 'passport';
 import cookieParser from 'cookie-parser';
 import 'dotenv/config'
-import { initializeApp, applicationDefault } from 'firebase-admin/app';
+import { initializeApp, applicationDefault, cert } from 'firebase-admin/app';
 import passportMiddleware from './middlewares/passport'
 import usuarioRoutes from './routes/usuario.router';
 import guiaRoutes from './routes/guia.router';
@@ -16,10 +16,17 @@ import reservaRoutes from './routes/reserva.router';
 
 process.env.GOOGLE_APPLICATION_CREDENTIALS;
 
+const serviceAccount = process.env.GOOGLE_APPLICATION_CREDENTIALS as string;
+
 initializeApp({
-  credential: applicationDefault(),
+  credential: cert(serviceAccount),
   projectId: 'qhapaqtour-be7e8'
 });
+
+// initializeApp({
+//   credential: applicationDefault(),
+//   projectId: 'qhapaqtour-be7e8'
+// });
 
 const app = express();
 
