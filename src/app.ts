@@ -16,17 +16,17 @@ import reservaRoutes from './routes/reserva.router';
 
 process.env.GOOGLE_APPLICATION_CREDENTIALS;
 
-const serviceAccount = process.env.GOOGLE_APPLICATION_CREDENTIALS as string;
-
-initializeApp({
-  credential: cert(serviceAccount),
-  projectId: 'qhapaqtour-be7e8'
-});
+// const serviceAccount = process.env.GOOGLE_APPLICATION_CREDENTIALS as string;
 
 // initializeApp({
-//   credential: applicationDefault(),
+//   credential: cert(serviceAccount),
 //   projectId: 'qhapaqtour-be7e8'
 // });
+
+initializeApp({
+  credential: applicationDefault(),
+  projectId: 'qhapaqtour-be7e8'
+});
 
 const app = express();
 
