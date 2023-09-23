@@ -14,6 +14,3 @@ router.delete('/reservas/:id',deleteReserva);
 
 export default router;
 
-
-// /clientes/:id/reservas
-// /guias/:id/reservas
